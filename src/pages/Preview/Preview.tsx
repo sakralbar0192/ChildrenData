@@ -52,11 +52,9 @@ const Preview = () => {
                         })
                         : <span>Вы пока не ввели данные о детях</span>
                     }
-                </div>
-                 
+                </div>                 
             </section>
-        </div>
-        
+        </div>        
     );
 };
 

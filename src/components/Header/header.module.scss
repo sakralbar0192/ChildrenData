@@ -3,6 +3,7 @@
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 100%;
     padding: 25px 90px;  
     box-shadow: 0px 1px 0px rgba(17, 17, 17, 0.1);
@@ -25,6 +26,7 @@
     align-items: center;
     justify-content: center;
     flex-grow: 1;
+    max-width: 1183px;
     padding: 0 103px 0 10px;
 
     a {
@@ -41,5 +43,19 @@
         &:active {
             opacity: 0.3;
         }
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+    }
+
+    .header__logo  {
+        margin: 0 0 20px;
+    }
+
+    .header__nav {
+        padding:  0 20px;
     }
 }

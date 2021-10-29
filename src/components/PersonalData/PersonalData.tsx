@@ -5,26 +5,11 @@ import cl from './PersonalData.module.scss';
 
 interface IPersonalDataProps {
     data: IPersonData
-    setData: (d:IPersonData)=> void
+    onInputChange: (e: React.ChangeEvent<HTMLInputElement>)=> void
 }
 
-const PersonalData:FC<IPersonalDataProps> = ({data, setData}) => {
+const PersonalData:FC<IPersonalDataProps> = ({data, onInputChange}) => {  
     
-
-    function changeHandler(e:React.ChangeEvent<HTMLInputElement>) {
-        const target = e.target
-        const value = target.value
-        switch (target.name) {
-            case fieldsNames.NAME:
-                setData({...data, name: value})
-                break
-            case fieldsNames.AGE:
-                setData({...data, age: value})
-                break
-        }
-        
-    }
-
     return (
         <section className={cl.personalData}>
             <h2>Персональные данные</h2>
@@ -34,14 +19,14 @@ const PersonalData:FC<IPersonalDataProps> = ({data, setData}) => {
                     type = "text"
                     name={fieldsNames.NAME}
                     value={data.name}
-                    onChange={changeHandler}
+                    onChange={onInputChange}
                 />
                 <TextInput 
                     inputLabel="Возраст"
                     type = "number"
                     name={fieldsNames.AGE}
                     value={data.age}
-                    onChange={changeHandler}
+                    onChange={onInputChange}
                 />
             </div>
         </section>

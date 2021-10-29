@@ -1,46 +1,17 @@
 import React, { FC } from 'react';
-import { fieldsNames, IChildData } from '../../types';
-import { addUniqueId } from '../../utils';
+import { IChildData } from '../../types';
 import Child from '../Child/Child';
 import Button from '../UI/Button/Button';
 import cl from './childrenData.module.scss';
 
 interface IChildrenDataProps {
     data: IChildData[]
-    setData: (d:IChildData[])=> void
+    onInputChange: (e:React.ChangeEvent<HTMLInputElement>, index: number)=> void
+    addChildHandler: ()=> void
+    deleteChildHandler: (index:number) => void
 }
 
-const ChildrenData:FC<IChildrenDataProps> = ({data, setData}) => {
-
-    function changeHandler(e:React.ChangeEvent<HTMLInputElement>, index: number) {
-        const target = e.target
-        const value = target.value 
-        switch (target.name) {
-            case fieldsNames.NAME:
-                const dataWithNewName = [...data];
-                dataWithNewName[index].name = value
-                setData(dataWithNewName)
-                break
-            case fieldsNames.AGE:
-                const dataWithNewAge = [...data];
-                dataWithNewAge[index].age = value
-                setData(dataWithNewAge)
-                break
-        }       
-    }
-
-    function addChildHandler() {
-        if (data.length < 5) {
-            const newData = [...data]
-            newData.push({name:'', age:'', id: addUniqueId(data)})
-            setData(newData)
-        }
-    }
-
-    function deleteChildHandler(index:number) {
-        const newData = data.filter((element, elementIndex)=> elementIndex !==index);
-        setData(newData)
-    }
+const ChildrenData:FC<IChildrenDataProps> = ({data, onInputChange, addChildHandler, deleteChildHandler}) => { 
 
     return (
         <section className={cl.childrenData}>
@@ -49,8 +20,7 @@ const ChildrenData:FC<IChildrenDataProps> = ({data, setData}) => {
                 {data.length<5
                     ?   <Button type="button" buttonLabel="Добавить ребенка" isBorderedButton={true} isButtonWithPlus={true} onClick={addChildHandler} />
                     :   <div></div>
-                }
-                                
+                }                                
             </div>  
             <div>
                     {data.map((child, index) => {
@@ -59,15 +29,13 @@ const ChildrenData:FC<IChildrenDataProps> = ({data, setData}) => {
                                 <Child 
                                     child={child} 
                                     index={index} 
-                                    changeHandler={(e)=>changeHandler(e,index)}
+                                    changeHandler={(e)=>onInputChange(e,index)}
                                     deleteChildHandler={()=>deleteChildHandler(index)} 
                                 />
                             </div>
-                        )
-                        
+                        )                        
                     })}
-            </div>
-            
+            </div>            
         </section>
     );
 };

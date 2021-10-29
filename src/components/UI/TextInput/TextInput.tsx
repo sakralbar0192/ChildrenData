@@ -9,6 +9,7 @@ interface IInputProps {
     value?: string 
     onChange: (e:React.ChangeEvent<HTMLInputElement>, index?:number)=> void        
 }
+
 const TextInput:FC<IInputProps> = ({inputLabel, type, name, value, onChange}) => {
 
 
@@ -26,10 +27,8 @@ const TextInput:FC<IInputProps> = ({inputLabel, type, name, value, onChange}) =>
             target.setCustomValidity('Самым длинным именем считается женское имя Александрина, которое включает в себя 12 букв')        
         } else  {
             target.setCustomValidity('')
-        }
-                 
-        target.reportValidity() 
-        
+        }                 
+        target.reportValidity()         
         onChange(e)
     }
 

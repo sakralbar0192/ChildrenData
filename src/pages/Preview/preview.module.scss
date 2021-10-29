@@ -1,0 +1,15 @@
+.preview {
+    width: 100%;
+    max-width: 615px;
+    margin: auto;
+}
+
+.preview__childrenList {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    div {
+        margin: 0 0 20px; 
+    }
+}

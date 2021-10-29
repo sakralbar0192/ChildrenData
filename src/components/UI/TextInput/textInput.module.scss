@@ -1,0 +1,35 @@
+.textInput {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 16px 6px;    
+    border: 1px solid #eaeaea;
+    cursor: text; 
+
+    &:hover {
+        border: 1px solid #01a7fd;
+    }
+
+    span {
+        margin: 0 0 2px;
+        font-size: 13px;
+        line-height: 16px;
+        color: rgba(#111111,0.48);
+    }
+
+
+    input {
+        width: 100%;
+        padding: 0;
+        font-size: 14px;
+        line-height: 24px;
+        border: 0;
+
+        &:focus {
+            border: 0;
+            outline: 0;
+        }
+    }
+
+    input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {-webkit-appearance: none;}
+}

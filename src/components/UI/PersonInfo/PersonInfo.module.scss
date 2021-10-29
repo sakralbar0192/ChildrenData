@@ -1,0 +1,13 @@
+.personInfo {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    color: #111111;
+    border-radius: 5px;
+
+    &_backgrounded {
+        background-color: #f1f1f1;
+    }
+}
